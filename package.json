@@ -1,0 +1,57 @@
+{
+  "name": "desafio-frontend-mb",
+  "version": "1.0.0",
+  "description": "Monorepo com Vue + Node.js usando Turborepo",
+  "private": true,
+  "packageManager": "npm@10.9.0",
+  "type": "module",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "start": "npm run build && node apps/server/src/index.js",
+    "lint": "turbo run lint",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"**/*.{js,vue,json,md}\"",
+    "stylelint": "stylelint \"**/*.{css,scss,vue}\"",
+    "stylelint:fix": "stylelint \"**/*.{css,scss,vue}\" --fix",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "@vitest/eslint-plugin": "^1.1.36",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "eslint": "^9.22.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-vue": "^10.0.0",
+    "globals": "^16.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.5.3",
+    "stylelint": "^16.15.0",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-config-standard-vue": "^1.0.0",
+    "turbo": "^2.4.4",
+    "vue-eslint-parser": "^10.1.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.vue": [
+      "eslint --fix",
+      "prettier --write",
+      "stylelint --fix"
+    ],
+    "*.{css,scss}": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  }
+}
