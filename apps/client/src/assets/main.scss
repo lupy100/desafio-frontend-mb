@@ -1,0 +1,8 @@
+@use './base' as *;
+@use './reset' as *;
+
+body {
+  color: $text-color;
+  font-family: $font-family;
+  text-rendering: optimizeLegibility;
+}

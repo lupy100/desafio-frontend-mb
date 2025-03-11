@@ -1,6 +1,13 @@
-export default {
+module.exports = {
   extends: ['stylelint-config-standard', 'stylelint-config-standard-vue'],
+  plugins: ['stylelint-scss'],
   rules: {
+    'at-rule-no-unknown': [
+      true,
+      {
+        ignoreAtRules: ['use', 'forward'],
+      },
+    ],
     'color-hex-length': 'short',
     'color-function-notation': 'modern',
     'alpha-value-notation': 'percentage',
