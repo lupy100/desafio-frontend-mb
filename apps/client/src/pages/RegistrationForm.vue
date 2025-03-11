@@ -1,5 +1,6 @@
 <template>
   <div class="registration-form">
+    <StepIndicator :current-step="1" :total-steps="4" />
     <h1>Seja bem vindo(a)</h1>
 
     <form @submit.prevent="submitForm">
@@ -14,8 +15,9 @@
 
 <script setup>
   import { ref } from 'vue';
-  import { registerUser } from '../api/register';
-  import ButtonBase from '../components/ButtonBase.vue';
+  import { registerUser } from '@/api/register';
+  import ButtonBase from '@/components/ButtonBase/ButtonBase.vue';
+  import StepIndicator from '@/components/StepIndicator/StepIndicator.vue';
 
   const form = ref({ name: '', email: '' });
 
@@ -31,20 +33,6 @@
   };
 </script>
 
-<style scoped>
-  .registration-form {
-    background-color: #ccc;
-    padding: 2rem;
-    border-radius: 8px;
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-
-  h1 {
-    font-weight: var(--font-weight-bold);
-    color: var(--color-brand-primary-regular);
-  }
+<style lang="scss" scoped>
+  @import url(./RegistrationForm.scss);
 </style>

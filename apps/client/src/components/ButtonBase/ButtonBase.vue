@@ -18,14 +18,6 @@
   </button>
 </template>
 
-<style scoped>
-  .button-base {
-    border: 1px solid #f90;
-    border-radius: 8px;
-    padding: 8px 24px;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    font-weight: bold;
-  }
+<style lang="scss" scoped>
+  @import url(./ButtonBase.scss);
 </style>
