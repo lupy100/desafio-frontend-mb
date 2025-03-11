@@ -1,14 +1,13 @@
 <template>
   <div class="app">
-    <div class="box">
-      <HelloWorld msg="Teste" />
-      <HelloWorld />
-    </div>
+    <main>
+      <RegistrationForm />
+    </main>
   </div>
 </template>
 
 <script setup>
-  import HelloWorld from './components/HelloWorld.vue';
+  import RegistrationForm from './pages/RegistrationForm.vue';
 </script>
 
 <style scoped>
@@ -17,10 +16,5 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-  }
-
-  .box {
-    background-color: dimgray;
-    padding: 20px;
   }
 </style>
