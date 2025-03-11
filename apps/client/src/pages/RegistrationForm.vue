@@ -37,4 +37,9 @@
     display: flex;
     flex-direction: column;
   }
+
+  h1 {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-brand-primary-regular);
+  }
 </style>
