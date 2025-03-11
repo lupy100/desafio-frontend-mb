@@ -13,16 +13,21 @@
 </template>
 
 <script setup>
+  import { ref } from 'vue';
+  import { registerUser } from '../api/register';
   import ButtonBase from '../components/ButtonBase.vue';
 
-  const form = {
-    name: '',
-    email: '',
-  };
+  const form = ref({ name: '', email: '' });
 
-  const submitForm = () => {
-    console.log('submitForm');
-    console.log('form', form);
+  const submitForm = async () => {
+    try {
+      const data = await registerUser(form.value);
+      // @todo exibir esses dados em um modal?
+      window.alert('Dados retornados pelo BE:\n' + JSON.stringify(data.data, null, 2));
+      form.value = { name: '', email: '' };
+    } catch (error) {
+      console.error('Erro ao enviar formulário:', error);
+    }
   };
 </script>
 

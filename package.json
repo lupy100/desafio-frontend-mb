@@ -6,7 +6,8 @@
   "packageManager": "npm@10.9.0",
   "type": "module",
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "packages/*"
   ],
   "scripts": {
     "dev": "turbo run dev",
@@ -53,5 +54,8 @@
     "*.{json,md}": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "@mb/shared-constants": "^1.0.0"
   }
 }
