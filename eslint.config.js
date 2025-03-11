@@ -78,6 +78,12 @@ export default [
       'import/namespace': 'error',
       'import/no-absolute-path': 'error',
       'import/first': 'error',
+      'prettier/prettier': [
+        'error',
+        {
+          endOfLine: 'auto',
+        },
+      ],
     },
     settings: {
       'import/resolver': {
