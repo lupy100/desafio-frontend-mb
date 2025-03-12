@@ -1,1 +1,13 @@
-/* @todo: arrumar margin nos inputs */
+.review-step {
+  :deep(.input-base):not(:last-child) {
+    margin-bottom: unset;
+  }
+
+  :deep(.input-base) {
+    margin-bottom: $spacing-small !important;
+  }
+
+  :deep(.welcome-step__wrapper) {
+    margin: $spacing-small 0;
+  }
+}

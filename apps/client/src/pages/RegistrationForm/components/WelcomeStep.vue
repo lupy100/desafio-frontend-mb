@@ -15,12 +15,19 @@
     <div class="welcome-step__wrapper">
       <div class="welcome-step__document-type">
         <div class="welcome-step__radio">
-          <input type="radio" id="pf" value="pf" v-model="documentType" />
+          <input
+            required
+            name="document-type"
+            type="radio"
+            id="pf"
+            value="pf"
+            v-model="documentType"
+          />
           <label for="pf">Pessoa física</label>
         </div>
 
         <div class="welcome-step__radio">
-          <input type="radio" id="pj" value="pj" v-model="documentType" />
+          <input name="document-type" type="radio" id="pj" value="pj" v-model="documentType" />
           <label for="pj">Pessoa jurídica</label>
         </div>
       </div>
