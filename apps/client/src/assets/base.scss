@@ -1,3 +1,5 @@
+/* stylelint-disable at-rule-empty-line-before */
+
 /* Spacings */
 $spacing-xxsmall: 4px;
 $spacing-xsmall: 8px;
@@ -17,11 +19,6 @@ $screen-xs: 576px;
 $screen-sm: 768px;
 $screen-md: 992px;
 $screen-lg: 1200px;
-$screen-xlg: 1440px;
-$screen-fhd: 1920px;
-$screen-2k: 2048px;
-$screen-4k: 3840px;
-$screen-max-container: 1136px;
 
 /* Misc */
 $border-radius: 8px;
@@ -46,3 +43,26 @@ $title-large: 24px;
 $text-body: 16px;
 $text-label: 14px;
 $text-error: 12px;
+
+/* Mixin responsive */
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: $screen-xs) {
+      @content;
+    }
+  } @else if $breakpoint == sm {
+    @media (max-width: $screen-sm) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (max-width: $screen-md) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (max-width: $screen-lg) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint size '#{$breakpoint}' not found.";
+  }
+}

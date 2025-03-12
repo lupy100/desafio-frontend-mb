@@ -2,10 +2,11 @@ module.exports = {
   extends: ['stylelint-config-standard', 'stylelint-config-standard-vue'],
   plugins: ['stylelint-scss'],
   rules: {
+    'media-query-no-invalid': null,
     'at-rule-no-unknown': [
       true,
       {
-        ignoreAtRules: ['use', 'forward'],
+        ignoreAtRules: ['use', 'forward', 'mixin', 'if', 'else', 'warn', 'include'],
       },
     ],
     'color-hex-length': 'short',
