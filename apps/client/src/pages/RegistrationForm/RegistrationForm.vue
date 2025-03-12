@@ -42,7 +42,7 @@
 </template>
 
 <script setup>
-  import { computed, ref } from 'vue';
+  import { computed, ref, watch } from 'vue';
   import { registerUser } from '@/api/register';
   import ButtonBase from '@/components/ButtonBase/ButtonBase.vue';
   import StepIndicator from '@/components/StepIndicator/StepIndicator.vue';
@@ -52,15 +52,17 @@
   import ReviewStep from './components/ReviewStep.vue';
   import { useValidation } from '@/composables/useValidations';
 
-  const form = ref({
-    name: '',
+  const setInitialState = () => ({
     email: '',
     documentType: 'pf',
+    name: '',
     document: '',
     initialDate: '',
     phoneNumber: '',
     password: '',
   });
+
+  const form = ref(setInitialState());
 
   const LAST_STEP = 4;
   const currentStep = ref(1);
@@ -120,10 +122,11 @@
       const data = await registerUser(formPayload);
       console.log(data);
       // @todo: Abrir um modal com os dados retornados
-      // @todo: Limpar o formulário
       window.alert(
         `Dados retornados pelo BE:\n${data.message}\n${JSON.stringify(data.data, null, 2)}`
       );
+      form.value = setInitialState();
+      currentStep.value = 1;
     } catch (error) {
       const responseErrors = error.errors;
       if (!responseErrors)
@@ -135,6 +138,13 @@
       });
     }
   };
+
+  watch(
+    () => form.value.documentType,
+    () => {
+      if (form.value.document) form.value.document = '';
+    }
+  );
 </script>
 
 <style lang="scss" scoped>

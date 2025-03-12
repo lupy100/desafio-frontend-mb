@@ -13,7 +13,6 @@
       required
     />
     <div class="welcome-step__wrapper">
-      <!-- @todo: Ao alterar precisa zerar o document -->
       <div class="welcome-step__document-type">
         <div class="welcome-step__radio">
           <input type="radio" id="pf" value="pf" v-model="documentType" />
