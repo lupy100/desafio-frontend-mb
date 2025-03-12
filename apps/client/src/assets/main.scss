@@ -10,4 +10,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @include respond-to(sm) {
+    display: block;
+    background-color: $color-white;
+  }
 }

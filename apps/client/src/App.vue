@@ -1,9 +1,7 @@
 <template>
-  <div class="app">
-    <main>
-      <RegistrationForm />
-    </main>
-  </div>
+  <main>
+    <RegistrationForm />
+  </main>
 </template>
 
 <script setup>

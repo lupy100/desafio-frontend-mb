@@ -1,4 +1,5 @@
 <template>
+  <!-- @todo: revisar as class -->
   <div class="registration-form">
     <StepIndicator :current-step="currentStep" :total-steps="LAST_STEP" />
     <h1>{{ stepTitle }}</h1>
@@ -127,7 +128,6 @@
     };
     try {
       const data = await registerUser(formPayload);
-      console.log(data);
       // @todo: Abrir um modal com os dados retornados
       window.alert(
         `Dados retornados pelo BE:\n${data.message}\n${JSON.stringify(data.data, null, 2)}`
