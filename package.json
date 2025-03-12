@@ -58,6 +58,6 @@
     ]
   },
   "dependencies": {
-    "@mb/shared-constants": "^1.0.0"
+    "@mb/shared": "^1.0.0"
   }
 }

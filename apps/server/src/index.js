@@ -2,7 +2,7 @@ import fs from 'fs';
 import { fileURLToPath, URL } from 'node:url';
 import path from 'path';
 
-import { API_PORT } from '@mb/shared-constants';
+import { API_PORT } from '@mb/shared/constants';
 import cors from 'cors';
 import express from 'express';
 
