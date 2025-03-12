@@ -7,10 +7,12 @@
       :placeholder="placeholder"
       class="input-field"
       @blur="$emit('blur')"
+      @focus="$emit('focus')"
       :autocomplete="autocomplete"
       :name="name"
       :id="id"
       :required="required"
+      autofocus
     />
     <small v-if="errorMessage" class="error-message">{{ errorMessage }}</small>
   </div>
@@ -18,6 +20,7 @@
 
 <script setup>
   const inputValue = defineModel('modelValue');
+  defineEmits(['blur', 'focus']);
 
   defineProps({
     label: {
@@ -49,9 +52,11 @@
       type: Boolean,
       default: false,
     },
+    autofocus: {
+      type: Boolean,
+      default: false,
+    },
   });
-
-  defineEmits(['blur']);
 </script>
 
 <style lang="scss" scoped>

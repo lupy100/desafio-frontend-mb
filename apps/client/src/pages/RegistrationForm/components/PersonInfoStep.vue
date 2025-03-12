@@ -9,6 +9,7 @@
       autocomplete="name"
       name="name"
       id="name"
+      required
     />
     <InputBase
       v-model="document"
@@ -21,6 +22,7 @@
       autocomplete="off"
       name="document"
       id="document"
+      required
     />
     <InputBase
       v-model="initialDate"
@@ -33,6 +35,7 @@
       autocomplete="off"
       name="initial-date"
       id="initial-date"
+      required
     />
     <InputBase
       v-model="phoneNumber"
@@ -45,6 +48,7 @@
       autocomplete="tel"
       name="tel"
       id="tel"
+      required
     />
   </div>
 </template>

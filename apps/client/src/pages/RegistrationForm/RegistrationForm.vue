@@ -33,8 +33,15 @@
         :errors="errors"
         :validate-field="validateField"
       />
+      <!-- @todo: remover styleinline -->
       <div style="display: flex; justify-content: space-around; margin-top: 20px">
-        <ButtonBase v-if="currentStep > 1" @click="goBack" variant="outlined">Voltar</ButtonBase>
+        <ButtonBase
+          style="margin-right: 12px"
+          v-if="currentStep > 1"
+          @click="goBack"
+          variant="outlined"
+          >Voltar</ButtonBase
+        >
         <ButtonBase type="submit">Continuar</ButtonBase>
       </div>
     </form>

@@ -39,8 +39,7 @@ export function useValidation() {
     },
     password: value => {
       if (!value) return 'Por favor, insira sua senha.';
-      if (!validatePassword(value))
-        return 'A senha deve ter pelo menos 8 caracteres, incluindo um número, uma letra maiúscula e uma minúscula.';
+      if (!validatePassword(value)) return 'A senha deve seguir os requisitos.';
     },
   };
 
