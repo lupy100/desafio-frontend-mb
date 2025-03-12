@@ -1,14 +1,25 @@
 <template>
   <div class="review-step">
-    <WelcomeStep v-model:email="form.email" v-model:document-type="form.documentType" />
+    <WelcomeStep
+      v-model:email="form.email"
+      v-model:document-type="form.documentType"
+      :errors="errors"
+      :validate-field="validateField"
+    />
     <PersonInfoStep
       v-model:name="form.name"
       v-model:document="form.document"
       v-model:initial-date="form.initialDate"
       v-model:phone-number="form.phoneNumber"
       :document-type="form.documentType"
+      :errors="errors"
+      :validate-field="validateField"
     />
-    <PasswordStep v-model:password="form.password" />
+    <PasswordStep
+      v-model:password="form.password"
+      :errors="errors"
+      :validate-field="validateField"
+    />
   </div>
 </template>
 
@@ -19,6 +30,8 @@
 
   defineProps({
     form: Object,
+    errors: Object,
+    validateField: Function,
   });
 </script>
 

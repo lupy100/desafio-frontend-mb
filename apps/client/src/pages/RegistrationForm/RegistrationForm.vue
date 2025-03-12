@@ -9,6 +9,8 @@
         v-if="currentStep === 1"
         v-model:email="form.email"
         v-model:document-type="form.documentType"
+        :errors="errors"
+        :validate-field="validateField"
       />
       <PersonInfoStep
         v-if="currentStep === 2"
@@ -17,13 +19,23 @@
         v-model:initial-date="form.initialDate"
         v-model:phone-number="form.phoneNumber"
         :document-type="form.documentType"
+        :errors="errors"
+        :validate-field="validateField"
       />
-      <PasswordStep v-if="currentStep === 3" v-model:password="form.password" />
-      <ReviewStep v-if="currentStep === 4" :form="form" />
+      <PasswordStep
+        v-if="currentStep === 3"
+        v-model:password="form.password"
+        :errors="errors"
+        :validate-field="validateField"
+      />
+      <ReviewStep
+        v-if="currentStep === 4"
+        :form="form"
+        :errors="errors"
+        :validate-field="validateField"
+      />
       <div style="display: flex; justify-content: space-around; margin-top: 20px">
-        <ButtonBase v-if="currentStep > 1" @click="currentStep -= 1" variant="outlined"
-          >Voltar</ButtonBase
-        >
+        <ButtonBase v-if="currentStep > 1" @click="goBack" variant="outlined">Voltar</ButtonBase>
         <ButtonBase type="submit">Continuar</ButtonBase>
       </div>
     </form>
@@ -39,11 +51,12 @@
   import PersonInfoStep from './components/PersonInfoStep.vue';
   import PasswordStep from './components/PasswordStep.vue';
   import ReviewStep from './components/ReviewStep.vue';
+  import { useValidation } from '@/composables/useValidations';
 
   const form = ref({
     name: '',
     email: '',
-    documentType: 'pf',
+    documentType: '',
     document: '',
     initialDate: '',
     phoneNumber: '',
@@ -53,16 +66,45 @@
   const LAST_STEP = 4;
   const currentStep = ref(1);
 
-  const submitForm = async () => {
-    if (currentStep.value < LAST_STEP) return (currentStep.value += 1);
+  const { errors, validateField, validateAllFields } = useValidation();
 
-    if (currentStep.value === LAST_STEP) {
+  const goBack = () => {
+    errors.value = {};
+    currentStep.value -= 1;
+  };
+  const submitForm = async () => {
+    const stepFields = {
+      1: [
+        { field: 'email', value: form.value.email },
+        { field: 'documentType', value: form.value.documentType },
+      ],
+      2: [
+        { field: 'name', value: form.value.name },
+        { field: 'document', value: form.value.document },
+        { field: 'initialDate', value: form.value.initialDate },
+        { field: 'phone', value: form.value.phoneNumber },
+      ],
+      3: [{ field: 'password', value: form.value.password }],
+      4: [
+        { field: 'email', value: form.value.email },
+        { field: 'documentType', value: form.value.documentType },
+        { field: 'name', value: form.value.name },
+        { field: 'document', value: form.value.document },
+        { field: 'initialDate', value: form.value.initialDate },
+        { field: 'phone', value: form.value.phoneNumber },
+        { field: 'password', value: form.value.password },
+      ],
+    };
+
+    if (!validateAllFields(stepFields[currentStep.value])) return;
+
+    if (currentStep.value < LAST_STEP) {
+      currentStep.value += 1;
+    } else {
       try {
+        // @todo: mandar como raw pro BE const rawValue = value.replace(/\D/g, '');
         const data = await registerUser(form.value);
-        // @todo: exibir esses dados em um modal?
         window.alert('Dados retornados pelo BE:\n' + JSON.stringify(data.data, null, 2));
-        // @todo: depois que definir o formato limpar os dados
-        // form.value = { name: '', email: '' };
       } catch (error) {
         console.error('Erro ao enviar formulário:', error);
       }

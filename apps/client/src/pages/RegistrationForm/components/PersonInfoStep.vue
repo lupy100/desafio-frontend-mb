@@ -1,17 +1,60 @@
 <template>
   <div class="person-info-step">
-    <InputBase v-model="name" :label="nameLabel" :placeholder="namePlaceholder" />
-    <InputBase v-model="document" :label="documentLabel" :placeholder="documentPlaceholder" />
-    <InputBase v-model="initialDate" :label="dateLabel" placeholder="28/05/1999" />
-    <InputBase v-model="phoneNumber" label="Telefone" placeholder="(00) 00000-0000" />
+    <InputBase
+      v-model="name"
+      :label="nameLabel"
+      :placeholder="namePlaceholder"
+      @blur="validateField('name', name)"
+      :error-message="errors.name"
+      autocomplete="name"
+      name="name"
+      id="name"
+    />
+    <InputBase
+      v-model="document"
+      :label="documentLabel"
+      :placeholder="documentPlaceholder"
+      @input="formatDocument"
+      @blur="validateField('document', document)"
+      :error-message="errors.document"
+      type="tel"
+      autocomplete="off"
+      name="document"
+      id="document"
+    />
+    <InputBase
+      v-model="initialDate"
+      :label="dateLabel"
+      placeholder="28/05/1999"
+      type="tel"
+      @input="formatDateNumber"
+      @blur="validateField('initialDate', initialDate)"
+      :error-message="errors.initialDate"
+      autocomplete="off"
+      name="initial-date"
+      id="initial-date"
+    />
+    <InputBase
+      v-model="phoneNumber"
+      label="Telefone"
+      placeholder="(00) 00000-0000"
+      @input="formatPhoneNumber"
+      @blur="validateField('phone', phoneNumber)"
+      :error-message="errors.phone"
+      type="tel"
+      autocomplete="tel"
+      name="tel"
+      id="tel"
+    />
   </div>
 </template>
 
 <script setup>
   import { computed } from 'vue';
   import InputBase from '@/components/InputBase/InputBase.vue';
+  import { formatCNPJ, formatCPF, formatDate, formatPhone } from '@mb/shared/utils/validations';
 
-  const props = defineProps({ documentType: String });
+  const props = defineProps({ documentType: String, errors: Object, validateField: Function });
 
   const name = defineModel('name');
   const document = defineModel('document');
@@ -22,7 +65,7 @@
 
   const nameLabel = computed(() => (isPF.value ? 'Nome completo' : 'Razão social'));
   const namePlaceholder = computed(() =>
-    isPF.value ? 'João Matheus Rodrigues Silva' : 'Mercado Bitcoin Serviços Digitais LTDA'
+    isPF.value ? 'João Silva' : 'Mercado Bitcoin Serviços Digitais LTDA'
   );
 
   const documentLabel = computed(() => (isPF.value ? 'CPF' : 'CNPJ'));
@@ -31,6 +74,20 @@
   );
 
   const dateLabel = computed(() => (isPF.value ? 'Data de nascimento' : 'Data de abertura'));
+
+  const formatPhoneNumber = () => {
+    phoneNumber.value = formatPhone(phoneNumber.value);
+  };
+
+  const formatDateNumber = () => {
+    initialDate.value = formatDate(initialDate.value);
+  };
+
+  const formatDocument = () => {
+    const formattedValue = isPF.value ? formatCPF(document.value) : formatCNPJ(document.value);
+
+    document.value = formattedValue;
+  };
 </script>
 
 <style lang="scss" scoped>

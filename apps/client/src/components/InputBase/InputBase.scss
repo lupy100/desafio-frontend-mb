@@ -1,3 +1,14 @@
+/* @todo: arrumar esse estilo */
+.input-error {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
 .input-base {
   display: flex;
   flex-direction: column;
