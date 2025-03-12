@@ -1,22 +1,7 @@
-/* @todo: arrumar esse estilo */
-.input-error {
-  border: 1px solid red;
-}
-
-.error-message {
-  color: red;
-  font-size: 0.875rem;
-  margin-top: 4px;
-}
-
 .input-base {
   display: flex;
   flex-direction: column;
-
-  .input-label {
-    margin-bottom: $spacing-xxsmall;
-    font-size: $text-label;
-  }
+  height: 78px;
 
   .input-field {
     padding: $spacing-small;
@@ -29,5 +14,34 @@
     &:focus {
       border-color: $color-brand-primary-light;
     }
+  }
+
+  .input-label {
+    margin-bottom: $spacing-xxsmall;
+    font-size: $text-label;
+    transition: color 0.3s ease;
+  }
+
+  &:focus-within {
+    .input-label {
+      color: $color-brand-primary-light;
+    }
+  }
+
+  &.input-error {
+    .input-field {
+      border-color: $color-error;
+    }
+
+    .input-label {
+      color: $color-error;
+    }
+  }
+
+  .error-message {
+    color: $color-error;
+    font-size: $text-error;
+    margin-top: $spacing-xxsmall;
+    padding-left: $spacing-xsmall;
   }
 }

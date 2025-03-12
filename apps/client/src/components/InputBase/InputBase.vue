@@ -1,15 +1,16 @@
 <template>
-  <div class="input-base">
-    <!-- @todo: adicionar required e se for required colocar * -->
-    <label v-if="label" class="input-label">{{ label }}</label>
+  <div class="input-base" :class="{ 'input-error': errorMessage }">
+    <label v-if="label" class="input-label">{{ label }} {{ required ? '*' : '' }}</label>
     <input
       :type="type"
       v-model="inputValue"
       :placeholder="placeholder"
       class="input-field"
-      :class="{ 'input-error': errorMessage }"
       @blur="$emit('blur')"
       :autocomplete="autocomplete"
+      :name="name"
+      :id="id"
+      :required="required"
     />
     <small v-if="errorMessage" class="error-message">{{ errorMessage }}</small>
   </div>
@@ -43,6 +44,10 @@
     },
     id: {
       type: String,
+    },
+    required: {
+      type: Boolean,
+      default: false,
     },
   });
 

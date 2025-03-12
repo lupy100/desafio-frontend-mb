@@ -1,16 +1,25 @@
 .welcome-step {
-  &__document-type {
-    display: flex;
+  &__wrapper {
     margin: $spacing-large 0;
+    height: 32px;
+  }
+
+  &__document-type {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 
   &__radio {
     input {
       margin-right: $spacing-xxsmall;
     }
+  }
 
-    &:last-child {
-      margin-left: $spacing-medium;
-    }
+  .error-message {
+    color: $color-error;
+    font-size: $text-error;
+    margin-top: $spacing-xxsmall;
+    padding-left: $spacing-xsmall;
   }
 }

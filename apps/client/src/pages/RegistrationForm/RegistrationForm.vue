@@ -82,6 +82,7 @@
     errors.value = {};
     currentStep.value -= 1;
   };
+
   const submitForm = async () => {
     const stepFields = {
       1: [
@@ -118,7 +119,8 @@
     try {
       const data = await registerUser(formPayload);
       console.log(data);
-      // @todo: abrir um modal
+      // @todo: Abrir um modal com os dados retornados
+      // @todo: Limpar o formulário
       window.alert(
         `Dados retornados pelo BE:\n${data.message}\n${JSON.stringify(data.data, null, 2)}`
       );

@@ -10,23 +10,25 @@
       autocomplete="email"
       name="email"
       id="email"
+      required
     />
-    <div class="welcome-step__document-type">
+    <div class="welcome-step__wrapper">
       <!-- @todo: Ao alterar precisa zerar o document -->
-      <div class="welcome-step__radio">
-        <input type="radio" id="pf" value="pf" v-model="documentType" />
-        <label for="pf">Pessoa física</label>
-      </div>
+      <div class="welcome-step__document-type">
+        <div class="welcome-step__radio">
+          <input type="radio" id="pf" value="pf" v-model="documentType" />
+          <label for="pf">Pessoa física</label>
+        </div>
 
-      <div class="welcome-step__radio">
-        <input type="radio" id="pj" value="pj" v-model="documentType" />
-        <label for="pj">Pessoa jurídica</label>
+        <div class="welcome-step__radio">
+          <input type="radio" id="pj" value="pj" v-model="documentType" />
+          <label for="pj">Pessoa jurídica</label>
+        </div>
       </div>
+      <small class="error-message" v-if="errors.documentType && !documentType">{{
+        errors.documentType
+      }}</small>
     </div>
-    <!-- @todo: Arrumar esse css -->
-    <small v-if="errors.documentType && !documentType" style="color: red">{{
-      errors.documentType
-    }}</small>
   </div>
 </template>
 
