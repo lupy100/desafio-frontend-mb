@@ -1,8 +1,7 @@
 <template>
   <div class="registration-form">
     <StepIndicator :current-step="currentStep" :total-steps="LAST_STEP" />
-    <!-- @todo: alterar conforme currentStep -->
-    <h1>Seja bem vindo(a)</h1>
+    <h1>{{ stepTitle }}</h1>
 
     <form @submit.prevent="submitForm">
       <WelcomeStep
@@ -43,7 +42,7 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue';
+  import { computed, ref } from 'vue';
   import { registerUser } from '@/api/register';
   import ButtonBase from '@/components/ButtonBase/ButtonBase.vue';
   import StepIndicator from '@/components/StepIndicator/StepIndicator.vue';
@@ -56,7 +55,7 @@
   const form = ref({
     name: '',
     email: '',
-    documentType: '',
+    documentType: 'pf',
     document: '',
     initialDate: '',
     phoneNumber: '',
@@ -67,6 +66,17 @@
   const currentStep = ref(1);
 
   const { errors, validateField, validateAllFields } = useValidation();
+
+  const stepTitle = computed(() => {
+    const titles = {
+      1: 'Seja bem-vindo(a)',
+      2: form.value.documentType === 'pf' ? 'Pessoa Física' : 'Pessoa Jurídica',
+      3: 'Senha de acesso',
+      4: 'Revise suas informações',
+    };
+
+    return titles[currentStep.value] || 'Seja bem-vindo(a)';
+  });
 
   const goBack = () => {
     errors.value = {};
@@ -82,7 +92,7 @@
         { field: 'name', value: form.value.name },
         { field: 'document', value: form.value.document },
         { field: 'initialDate', value: form.value.initialDate },
-        { field: 'phone', value: form.value.phoneNumber },
+        { field: 'phoneNumber', value: form.value.phoneNumber },
       ],
       3: [{ field: 'password', value: form.value.password }],
       4: [
@@ -91,23 +101,36 @@
         { field: 'name', value: form.value.name },
         { field: 'document', value: form.value.document },
         { field: 'initialDate', value: form.value.initialDate },
-        { field: 'phone', value: form.value.phoneNumber },
+        { field: 'phoneNumber', value: form.value.phoneNumber },
         { field: 'password', value: form.value.password },
       ],
     };
 
     if (!validateAllFields(stepFields[currentStep.value])) return;
 
-    if (currentStep.value < LAST_STEP) {
-      currentStep.value += 1;
-    } else {
-      try {
-        // @todo: mandar como raw pro BE const rawValue = value.replace(/\D/g, '');
-        const data = await registerUser(form.value);
-        window.alert('Dados retornados pelo BE:\n' + JSON.stringify(data.data, null, 2));
-      } catch (error) {
-        console.error('Erro ao enviar formulário:', error);
-      }
+    if (currentStep.value < LAST_STEP) return (currentStep.value += 1);
+
+    const formPayload = {
+      ...form.value,
+      document: form.value.document.replace(/\D/g, ''),
+      phoneNumber: form.value.phoneNumber.replace(/\D/g, ''),
+    };
+    try {
+      const data = await registerUser(formPayload);
+      console.log(data);
+      // @todo: abrir um modal
+      window.alert(
+        `Dados retornados pelo BE:\n${data.message}\n${JSON.stringify(data.data, null, 2)}`
+      );
+    } catch (error) {
+      const responseErrors = error.errors;
+      if (!responseErrors)
+        return window.alert(
+          'Erro ao enviar formulário para o BE:\n Ligue para o suporte e informe o erro'
+        );
+      Object.entries(responseErrors).forEach(([field, message]) => {
+        return (errors.value[field] = message);
+      });
     }
   };
 </script>

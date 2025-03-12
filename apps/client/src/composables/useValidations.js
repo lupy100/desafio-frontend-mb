@@ -22,18 +22,16 @@ export function useValidation() {
       value = value.replace(/\D/g, '');
       if (!value || (value.length !== 11 && value.length !== 14))
         return 'Por favor, insira um número de documento válido.';
-      if (value.length === 11 && !isCPFValid(value)) {
+      if (value.length === 11 && !isCPFValid(value))
         return 'CPF inválido. Verifique e tente novamente.';
-      }
-      if (value.length === 14 && !isCNPJValid(value)) {
+      if (value.length === 14 && !isCNPJValid(value))
         return 'CNPJ inválido. Verifique e tente novamente.';
-      }
     },
     initialDate: value => {
       if (!value) return 'Por favor, insira uma data.';
       if (!validateDate(value)) return 'Data inválida. Use o formato correto.';
     },
-    phone: value => {
+    phoneNumber: value => {
       value = value.replace(/\D/g, '');
       if (!value) return 'Por favor, insira um número de telefone.';
       if (value.length < 10 || value.length > 11)

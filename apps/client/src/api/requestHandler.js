@@ -16,9 +16,7 @@ const requestHandler = async (endpoint, options = {}) => {
   const response = await fetch(url, config);
   const data = await response.json();
 
-  if (!response.ok) {
-    throw new Error(data.message || 'Erro ao realizar a requisição');
-  }
+  if (!response.ok) throw data || 'Erro ao realizar a requisição';
 
   return data;
 };
