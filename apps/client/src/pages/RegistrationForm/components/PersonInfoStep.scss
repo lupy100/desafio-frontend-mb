@@ -1,0 +1,5 @@
+.person-info-step {
+  .input-base:not(:last-child) {
+    margin-bottom: $spacing-medium;
+  }
+}
