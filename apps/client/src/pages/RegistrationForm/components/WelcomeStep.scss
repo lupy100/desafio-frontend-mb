@@ -1,22 +1,22 @@
 .welcome-step {
-  &__wrapper {
+  &__document-type-wrapper {
     margin: $spacing-large 0;
     height: 32px;
   }
 
-  &__document-type {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
-
   &__radio {
+    &-group {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
     input {
       margin-right: $spacing-xxsmall;
     }
   }
 
-  .error-message {
+  &__error-message {
     color: $color-error;
     font-size: $text-error;
     margin-top: $spacing-xxsmall;

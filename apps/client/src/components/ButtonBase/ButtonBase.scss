@@ -9,7 +9,7 @@
     color 0.3s ease;
   width: 100%;
 
-  &.flat {
+  &--flat {
     background-color: $color-brand-primary-light;
     color: $color-white;
     border: none;
@@ -24,7 +24,7 @@
     }
   }
 
-  &.outlined {
+  &--outlined {
     background-color: transparent;
     color: $color-brand-primary-light;
     border: 2px solid $color-brand-primary-light;

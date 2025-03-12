@@ -11,9 +11,10 @@
       name="email"
       id="email"
       required
+      autofocus
     />
-    <div class="welcome-step__wrapper">
-      <div class="welcome-step__document-type">
+    <div class="welcome-step__document-type-wrapper">
+      <div class="welcome-step__radio-group">
         <div class="welcome-step__radio">
           <input
             required
@@ -31,9 +32,9 @@
           <label for="pj">Pessoa jurídica</label>
         </div>
       </div>
-      <small class="error-message" v-if="errors.documentType && !documentType">{{
-        errors.documentType
-      }}</small>
+      <small class="welcome-step__error-message" v-if="errors.documentType && !documentType">
+        {{ errors.documentType }}
+      </small>
     </div>
   </div>
 </template>

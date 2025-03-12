@@ -20,23 +20,25 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 const vueDistPath = path.resolve(__dirname, '../../client/dist');
 
-// @todo: dar uma olhada no warning ao rodar npm start
-// WARNING no output files found for task server#build. Please check your `outputs` key in `turbo.json`
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/registration', (_req, res) => {
-  // @todo: Se sobrar tempo melhorar essa validação para verificar se existe o arquivo index.html
   if (fs.existsSync(vueDistPath)) {
     res.sendFile(path.join(vueDistPath, 'index.html'));
   } else {
-    // @todo: Improve this html message
     res.send(`
       <!DOCTYPE html>
       <html lang="pt-BR">
       <body>
-        <p>O build do Vue não foi encontrado.</p>
+        <div>
+          <h1>Erro: Build do Vue não Encontrado na pasta apps/client/dist</h1>
+          <p>O build do Vue não foi encontrado. Para corrigir isso, siga as instruções abaixo:</p>
+          <p><strong>1.</strong> No diretório do projeto, execute <code>npm install</code></p>
+          <p><strong>2.</strong> Em seguida, execute <code>npm run start</code></p>
+          <p><strong>3.</strong> Após ser concluído com sucesso, o Front-End estará disponível em <a href="http://localhost:${PORT}/registration" target="_blank">http://localhost:${PORT}/registration</a> </p>
+        </div>
       </body>
       </html>
     `);

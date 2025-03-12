@@ -1,48 +1,43 @@
 <template>
-  <!-- @todo: revisar as class -->
   <div class="registration-form">
     <StepIndicator :current-step="currentStep" :total-steps="LAST_STEP" />
-    <h1>{{ stepTitle }}</h1>
+    <h1 class="registration-form__title">{{ stepTitle }}</h1>
 
     <form @submit.prevent="submitForm">
-      <WelcomeStep
-        v-if="currentStep === 1"
-        v-model:email="form.email"
-        v-model:document-type="form.documentType"
-        :errors="errors"
-        :validate-field="validateField"
-      />
-      <PersonInfoStep
-        v-if="currentStep === 2"
-        v-model:name="form.name"
-        v-model:document="form.document"
-        v-model:initial-date="form.initialDate"
-        v-model:phone-number="form.phoneNumber"
-        :document-type="form.documentType"
-        :errors="errors"
-        :validate-field="validateField"
-      />
-      <PasswordStep
-        v-if="currentStep === 3"
-        v-model:password="form.password"
-        :errors="errors"
-        :validate-field="validateField"
-      />
-      <ReviewStep
-        v-if="currentStep === 4"
-        :form="form"
-        :errors="errors"
-        :validate-field="validateField"
-      />
-      <!-- @todo: remover styleinline -->
-      <div style="display: flex; justify-content: space-around; margin-top: 20px">
-        <ButtonBase
-          style="margin-right: 12px"
-          v-if="currentStep > 1"
-          @click="goBack"
-          variant="outlined"
-          >Voltar</ButtonBase
-        >
+      <Transition name="slide-fade" mode="out-in">
+        <WelcomeStep
+          v-if="currentStep === 1"
+          v-model:email="form.email"
+          v-model:document-type="form.documentType"
+          :errors="errors"
+          :validate-field="validateField"
+        />
+        <PersonInfoStep
+          v-else-if="currentStep === 2"
+          v-model:name="form.name"
+          v-model:document="form.document"
+          v-model:initial-date="form.initialDate"
+          v-model:phone-number="form.phoneNumber"
+          :document-type="form.documentType"
+          :errors="errors"
+          :validate-field="validateField"
+        />
+        <PasswordStep
+          v-else-if="currentStep === 3"
+          v-model:password="form.password"
+          :errors="errors"
+          :validate-field="validateField"
+        />
+        <ReviewStep
+          v-else-if="currentStep === 4"
+          :form="form"
+          :errors="errors"
+          :validate-field="validateField"
+        />
+      </Transition>
+
+      <div class="registration-form__actions">
+        <ButtonBase v-if="currentStep > 1" @click="goBack" variant="outlined">Voltar</ButtonBase>
         <ButtonBase type="submit">Continuar</ButtonBase>
       </div>
     </form>

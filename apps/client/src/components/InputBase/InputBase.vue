@@ -1,20 +1,20 @@
 <template>
-  <div class="input-base" :class="{ 'input-error': errorMessage }">
-    <label v-if="label" class="input-label">{{ label }} {{ required ? '*' : '' }}</label>
+  <div class="input-base" :class="{ 'input-base--error': errorMessage }">
+    <label v-if="label" class="input-base__label">{{ label }} {{ required ? '*' : '' }}</label>
     <input
       :type="type"
       v-model="inputValue"
       :placeholder="placeholder"
-      class="input-field"
+      class="input-base__field"
       @blur="$emit('blur')"
       @focus="$emit('focus')"
       :autocomplete="autocomplete"
       :name="name"
       :id="id"
       :required="required"
-      autofocus
+      :autofocus="autofocus"
     />
-    <small v-if="errorMessage" class="error-message">{{ errorMessage }}</small>
+    <small v-if="errorMessage" class="input-base__error-message">{{ errorMessage }}</small>
   </div>
 </template>
 

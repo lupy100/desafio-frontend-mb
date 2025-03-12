@@ -1,5 +1,5 @@
 <template>
-  <button :class="['button-base', variant]" :type="type" :disabled="disabled">
+  <button :class="['button-base', `button-base--${variant}`]" :type="type" :disabled="disabled">
     <slot />
   </button>
 </template>
@@ -17,6 +17,9 @@
     variant: {
       type: String,
       default: 'flat',
+      validator(value) {
+        return ['flat', 'outlined'].includes(value);
+      },
     },
   });
 </script>

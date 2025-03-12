@@ -3,7 +3,7 @@
   flex-direction: column;
   height: 78px;
 
-  .input-field {
+  &__field {
     padding: $spacing-small;
     border-radius: $border-radius;
     border: 1px solid $color-disabled;
@@ -16,29 +16,29 @@
     }
   }
 
-  .input-label {
+  &__label {
     margin-bottom: $spacing-xxsmall;
     font-size: $text-label;
     transition: color 0.3s ease;
   }
 
   &:focus-within {
-    .input-label {
+    &__label {
       color: $color-brand-primary-light;
     }
   }
 
-  &.input-error {
-    .input-field {
+  &--error {
+    &__field {
       border-color: $color-error;
     }
 
-    .input-label {
+    &__label {
       color: $color-error;
     }
   }
 
-  .error-message {
+  &__error-message {
     color: $color-error;
     font-size: $text-error;
     margin-top: $spacing-xxsmall;

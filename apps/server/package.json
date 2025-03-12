@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "build": "echo 'Build completed'",
+    "build": "rm -rf dist && mkdir dist && cp -r src/* dist/",
     "start": "node src/index.js"
   },
   "dependencies": {
