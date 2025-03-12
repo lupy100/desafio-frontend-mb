@@ -9,14 +9,27 @@
       autocomplete="password"
       name="password"
       id="password"
+      @focus="showPasswordRequirements = true"
+      required
     />
+    <Transition>
+      <ul v-if="showPasswordRequirements" class="password-step__requirements">
+        <li>- Deve conter no mínimo 8 caracteres</li>
+        <li>- Deve conter no mínimo 1 letra maiúscula</li>
+        <li>- Deve conter no mínimo 1 letra minúscula</li>
+        <li>- Deve conter no mínimo 1 número</li>
+      </ul>
+    </Transition>
   </div>
 </template>
 
 <script setup>
   import InputBase from '@/components/InputBase/InputBase.vue';
+  import { ref } from 'vue';
 
   const password = defineModel('password');
+
+  const showPasswordRequirements = ref(false);
 
   defineProps({
     errors: Object,
