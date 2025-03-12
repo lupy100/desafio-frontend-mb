@@ -5,4 +5,9 @@ body {
   color: $text-color;
   font-family: $font-family;
   text-rendering: optimizeLegibility;
+  background-color: $background-color;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

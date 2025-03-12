@@ -1,8 +1,8 @@
 .step-indicator {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
+  font-size: $text-body;
+  margin-bottom: $spacing-xsmall;
 
   &__current {
-    color: #007bff;
+    color: $color-brand-primary-regular;
   }
 }

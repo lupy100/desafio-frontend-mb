@@ -1,0 +1,22 @@
+.input-base {
+  display: flex;
+  flex-direction: column;
+
+  .input-label {
+    margin-bottom: $spacing-xxsmall;
+    font-size: $text-label;
+  }
+
+  .input-field {
+    padding: $spacing-small;
+    border-radius: $border-radius;
+    border: 1px solid $color-disabled;
+    font-size: $text-body;
+    outline: none;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      border-color: $color-brand-primary-light;
+    }
+  }
+}

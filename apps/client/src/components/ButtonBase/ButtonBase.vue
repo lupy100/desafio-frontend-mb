@@ -1,22 +1,25 @@
+<template>
+  <button :class="['button-base', variant]" :type="type" :disabled="disabled">
+    <slot />
+  </button>
+</template>
+
 <script setup>
   defineProps({
-    text: {
-      type: String,
-      required: true,
-      default: 'Continuar',
-    },
     type: {
       type: String,
       default: 'button',
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    variant: {
+      type: String,
+      default: 'flat',
+    },
   });
 </script>
-
-<template>
-  <button class="button-base" :type="type">
-    {{ text }}
-  </button>
-</template>
 
 <style lang="scss" scoped>
   @import url(./ButtonBase.scss);

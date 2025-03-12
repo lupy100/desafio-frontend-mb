@@ -1,9 +1,42 @@
 .button-base {
-  border: 1px solid $color-brand-primary-regular;
-  border-radius: 8px;
-  padding: 8px 24px;
-  text-align: center;
-  font-size: 16px;
+  padding: $spacing-small $spacing-medium;
+  border-radius: $border-radius;
+  font-size: $text-body;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: $font-weight-bold;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  &.flat {
+    background-color: $color-brand-primary-light;
+    color: $color-white;
+    border: none;
+
+    &:hover {
+      background-color: $color-brand-primary-regular;
+    }
+
+    &:disabled {
+      background-color: $color-disabled;
+      cursor: not-allowed;
+    }
+  }
+
+  &.outlined {
+    background-color: transparent;
+    color: $color-brand-primary-light;
+    border: 2px solid $color-brand-primary-light;
+
+    &:hover {
+      background-color: $color-brand-primary-light;
+      color: $color-white;
+    }
+
+    &:disabled {
+      border-color: $color-disabled;
+      color: $color-disabled;
+      cursor: not-allowed;
+    }
+  }
 }

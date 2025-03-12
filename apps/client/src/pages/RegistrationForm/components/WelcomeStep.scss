@@ -1,0 +1,16 @@
+.welcome-step {
+  &__document-type {
+    display: flex;
+    margin: $spacing-large 0;
+  }
+
+  &__radio {
+    input {
+      margin-right: $spacing-xxsmall;
+    }
+
+    &:last-child {
+      margin-left: $spacing-medium;
+    }
+  }
+}
