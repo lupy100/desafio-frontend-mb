@@ -12,37 +12,37 @@ export function useValidation() {
   const errors = ref({});
 
   const validationRules = {
-    email: value => (!value || !validateEmail(value)) && 'Por favor, adicione um e-mail válido.',
-    documentType: value => !value && 'Selecione o tipo de pessoa.',
+    email: value => (!value || !validateEmail(value)) && 'Por favor, insira um e-mail válido.',
+    documentType: value => !value && 'Por favor, selecione o tipo de pessoa.',
     name: value => {
       if (!value) return 'Por favor, insira seu nome.';
-      if (!validateName(value)) return 'O nome deve ter ao menos 3 caracteres.';
+      if (!validateName(value)) return 'O nome deve ter pelo menos 3 caracteres.';
     },
     document: value => {
       value = value.replace(/\D/g, '');
       if (!value || (value.length !== 11 && value.length !== 14))
-        return 'Por favor, insira um numero valido.';
+        return 'Por favor, insira um número de documento válido.';
       if (value.length === 11 && !isCPFValid(value)) {
-        return 'O número deve seguir o padrão de CPF.';
+        return 'CPF inválido. Verifique e tente novamente.';
       }
       if (value.length === 14 && !isCNPJValid(value)) {
-        return 'O número deve seguir o padrão de CNPJ.';
+        return 'CNPJ inválido. Verifique e tente novamente.';
       }
     },
     initialDate: value => {
-      if (!value) return 'Por favor, insira uma data';
-      if (!validateDate(value)) return 'Por favor, insira uma data válida.';
+      if (!value) return 'Por favor, insira uma data.';
+      if (!validateDate(value)) return 'Data inválida. Use o formato correto.';
     },
     phone: value => {
       value = value.replace(/\D/g, '');
-      if (!value) return 'Por favor, insira um telefone válido.';
+      if (!value) return 'Por favor, insira um número de telefone.';
       if (value.length < 10 || value.length > 11)
-        return 'O número de telefone deve ter entre 10 e 11 dígitos.';
+        return 'O telefone deve conter entre 10 e 11 dígitos.';
     },
     password: value => {
-      if (!value) return 'Insira sua senha.';
+      if (!value) return 'Por favor, insira sua senha.';
       if (!validatePassword(value))
-        return 'pelo menos 8 caracteres, um número, uma letra maiúscula e uma minúscula.';
+        return 'A senha deve ter pelo menos 8 caracteres, incluindo um número, uma letra maiúscula e uma minúscula.';
     },
   };
 
