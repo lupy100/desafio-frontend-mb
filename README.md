@@ -16,7 +16,7 @@
 
 <p align="center">
   <a href="#-demonstração">Demonstração</a> •
-  <a href="#-rodando-o-projeto-localmente">Rodando o projeto localmente</a> •
+  <a href="#%EF%B8%8F-rodando-o-projeto-localmente">Rodando o projeto localmente</a> •
   <a href="#-estrutura-do-projeto">Estrutura do projeto</a> •
   <a href="#-tecnologias">Tecnologias</a> •
   <a href="#-design">Design</a>•
