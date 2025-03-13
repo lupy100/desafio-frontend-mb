@@ -27,6 +27,7 @@
 ## 💻 Demonstração
 
 ### Demonstração do fluxo simples
+
 https://github.com/user-attachments/assets/db47a1cb-09fd-4dc7-8820-34a1e09b63bf
 
 ## ⚛️ Rodando o projeto localmente
@@ -60,7 +61,7 @@ $ npm run dev
 
 Ou para executar em modo de produção
 
-```bash 
+```bash
 $ npm run start
 
 # Acesse a página de registro:
@@ -121,17 +122,20 @@ Durante o desenvolvimento o [npm](https://www.npmjs.com/) foi escolhido como ger
 ### Principais dependências
 
 #### Frontend (Vue.js)
+
 - [Vue 3](https://vuejs.org/) como framework principal
 - [Vite](https://vitejs.dev/) para build e desenvolvimento
 - [Vitest](https://vitest.dev/) para testes unitários
 - [SASS](https://sass-lang.com/) para estilo CSS
 
 #### Backend (Node.js)
+
 - [Express](https://expressjs.com/) como framework web
 - [Cors](https://www.npmjs.com/package/cors) para habilitar CORS
 - [Nodemon](https://nodemon.io/) para desenvolvimento
 
 #### Ferramentas de desenvolvimento
+
 - [Turborepo](https://turbo.build/) para gerenciamento do monorepo
 - [ESLint](https://eslint.org/) para linting de código
 - [Prettier](https://prettier.io/) para formatação de código

@@ -102,7 +102,6 @@ describe('RegistrationForm.vue', () => {
   it('handles API errors correctly', async () => {
     const wrapper = mount(RegistrationForm);
 
-    // Simula um erro na API
     vi.mocked(registerUser).mockRejectedValueOnce({
       errors: {
         email: 'Email inválido',

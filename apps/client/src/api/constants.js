@@ -1,5 +1,3 @@
-import { API_PORT } from '@mb/shared/constants';
-
-const API_URL = `http://localhost:${API_PORT}/api`;
+const API_URL = `https://desafio-frontend-mb.onrender.com/api`;
 
 export { API_URL };
