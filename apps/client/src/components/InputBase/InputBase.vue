@@ -5,7 +5,7 @@
     </label>
     <div class="input-base__wrapper">
       <input
-        data-testid="input-base__field"
+        :data-testid="testId"
         :type="computedType"
         v-model="inputValue"
         :placeholder="placeholder"
@@ -57,6 +57,10 @@
     id: String,
     required: Boolean,
     autofocus: Boolean,
+    testId: {
+      type: String,
+      default: 'input-base__field',
+    },
   });
 
   const isPasswordVisible = ref(false);
