@@ -1,6 +1,7 @@
 <template>
   <div class="person-info-step">
     <InputBase
+      test-id="person-info-step__name-input"
       v-model="name"
       :label="nameLabel"
       :placeholder="namePlaceholder"
@@ -12,6 +13,7 @@
       required
     />
     <InputBase
+      test-id="person-info-step__document-input"
       v-model="document"
       :label="documentLabel"
       :placeholder="documentPlaceholder"
@@ -25,6 +27,7 @@
       required
     />
     <InputBase
+      test-id="person-info-step__date-input"
       v-model="initialDate"
       :label="dateLabel"
       placeholder="28/05/1999"
@@ -38,6 +41,7 @@
       required
     />
     <InputBase
+      test-id="person-info-step__phone-input"
       v-model="phoneNumber"
       label="Telefone"
       placeholder="(00) 00000-0000"

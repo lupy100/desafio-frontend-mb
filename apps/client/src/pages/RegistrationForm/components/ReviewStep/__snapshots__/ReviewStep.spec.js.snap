@@ -17,27 +17,27 @@ exports[`ReviewStep.vue > renders correctly and matches snapshot 1`] = `
       <!--v-if-->
     </div>
   </div>
-  <div data-v-a5ecfb82="" data-v-f1da6af0="" class="person-info-step">
-    <div data-v-ed265372="" data-v-a5ecfb82="" class="input-base"><label data-v-ed265372="" data-testid="input-base__label" class="input-base__label">Razão social *</label>
-      <div data-v-ed265372="" class="input-base__wrapper"><input data-v-ed265372="" data-testid="input-base__field" type="text" placeholder="Mercado Bitcoin Serviços Digitais LTDA" class="input-base__field" autocomplete="name" name="name" id="name" required="">
+  <div data-v-411993ea="" data-v-f1da6af0="" class="person-info-step">
+    <div data-v-ed265372="" data-v-411993ea="" class="input-base"><label data-v-ed265372="" data-testid="input-base__label" class="input-base__label">Razão social *</label>
+      <div data-v-ed265372="" class="input-base__wrapper"><input data-v-ed265372="" data-testid="person-info-step__name-input" type="text" placeholder="Mercado Bitcoin Serviços Digitais LTDA" class="input-base__field" autocomplete="name" name="name" id="name" required="">
         <!--v-if-->
       </div>
       <!--v-if-->
     </div>
-    <div data-v-ed265372="" data-v-a5ecfb82="" class="input-base"><label data-v-ed265372="" data-testid="input-base__label" class="input-base__label">CNPJ *</label>
-      <div data-v-ed265372="" class="input-base__wrapper"><input data-v-ed265372="" data-testid="input-base__field" type="tel" placeholder="00.000.000/0000-00" class="input-base__field" autocomplete="off" name="document" id="document" required="">
+    <div data-v-ed265372="" data-v-411993ea="" class="input-base"><label data-v-ed265372="" data-testid="input-base__label" class="input-base__label">CNPJ *</label>
+      <div data-v-ed265372="" class="input-base__wrapper"><input data-v-ed265372="" data-testid="person-info-step__document-input" type="tel" placeholder="00.000.000/0000-00" class="input-base__field" autocomplete="off" name="document" id="document" required="">
         <!--v-if-->
       </div>
       <!--v-if-->
     </div>
-    <div data-v-ed265372="" data-v-a5ecfb82="" class="input-base"><label data-v-ed265372="" data-testid="input-base__label" class="input-base__label">Data de abertura *</label>
-      <div data-v-ed265372="" class="input-base__wrapper"><input data-v-ed265372="" data-testid="input-base__field" type="tel" placeholder="28/05/1999" class="input-base__field" autocomplete="off" name="initial-date" id="initial-date" required="">
+    <div data-v-ed265372="" data-v-411993ea="" class="input-base"><label data-v-ed265372="" data-testid="input-base__label" class="input-base__label">Data de abertura *</label>
+      <div data-v-ed265372="" class="input-base__wrapper"><input data-v-ed265372="" data-testid="person-info-step__date-input" type="tel" placeholder="28/05/1999" class="input-base__field" autocomplete="off" name="initial-date" id="initial-date" required="">
         <!--v-if-->
       </div>
       <!--v-if-->
     </div>
-    <div data-v-ed265372="" data-v-a5ecfb82="" class="input-base"><label data-v-ed265372="" data-testid="input-base__label" class="input-base__label">Telefone *</label>
-      <div data-v-ed265372="" class="input-base__wrapper"><input data-v-ed265372="" data-testid="input-base__field" type="tel" placeholder="(00) 00000-0000" class="input-base__field" autocomplete="tel" name="tel" id="tel" required="">
+    <div data-v-ed265372="" data-v-411993ea="" class="input-base"><label data-v-ed265372="" data-testid="input-base__label" class="input-base__label">Telefone *</label>
+      <div data-v-ed265372="" class="input-base__wrapper"><input data-v-ed265372="" data-testid="person-info-step__phone-input" type="tel" placeholder="(00) 00000-0000" class="input-base__field" autocomplete="tel" name="tel" id="tel" required="">
         <!--v-if-->
       </div>
       <!--v-if-->

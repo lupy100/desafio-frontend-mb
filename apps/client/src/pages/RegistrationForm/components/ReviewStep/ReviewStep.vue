@@ -25,7 +25,7 @@
 
 <script setup>
   import WelcomeStep from '../WelcomeStep/WelcomeStep.vue';
-  import PersonInfoStep from '../PersonInfoStep.vue';
+  import PersonInfoStep from '../PersonInfoStep/PersonInfoStep.vue';
   import PasswordStep from '../PasswordStep/PasswordStep.vue';
 
   defineProps({
