@@ -1,0 +1,56 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ReviewStep.vue > renders correctly and matches snapshot 1`] = `
+"<div data-v-f1da6af0="" class="review-step">
+  <div data-v-ca3d5757="" data-v-f1da6af0="" class="welcome-step">
+    <div data-v-ed265372="" data-v-ca3d5757="" class="input-base"><label data-v-ed265372="" data-testid="input-base__label" class="input-base__label">Endereço de e-mail *</label>
+      <div data-v-ed265372="" class="input-base__wrapper"><input data-v-ed265372="" data-testid="welcome-step__email-input" type="email" placeholder="joao.silva@mb.com.br" class="input-base__field" autocomplete="email" name="email" id="email" required="" autofocus="">
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+    </div>
+    <div data-v-ca3d5757="" class="welcome-step__document-type-wrapper">
+      <div data-v-ca3d5757="" class="welcome-step__radio-group">
+        <div data-v-ca3d5757="" class="welcome-step__radio"><input data-v-ca3d5757="" data-testid="welcome-step__radio--pf" required="" name="document-type" type="radio" id="pf" value="pf"><label data-v-ca3d5757="" for="pf">Pessoa física</label></div>
+        <div data-v-ca3d5757="" class="welcome-step__radio"><input data-v-ca3d5757="" data-testid="welcome-step__radio--pj" name="document-type" type="radio" id="pj" value="pj"><label data-v-ca3d5757="" for="pj">Pessoa jurídica</label></div>
+      </div>
+      <!--v-if-->
+    </div>
+  </div>
+  <div data-v-a5ecfb82="" data-v-f1da6af0="" class="person-info-step">
+    <div data-v-ed265372="" data-v-a5ecfb82="" class="input-base"><label data-v-ed265372="" data-testid="input-base__label" class="input-base__label">Razão social *</label>
+      <div data-v-ed265372="" class="input-base__wrapper"><input data-v-ed265372="" data-testid="input-base__field" type="text" placeholder="Mercado Bitcoin Serviços Digitais LTDA" class="input-base__field" autocomplete="name" name="name" id="name" required="">
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+    </div>
+    <div data-v-ed265372="" data-v-a5ecfb82="" class="input-base"><label data-v-ed265372="" data-testid="input-base__label" class="input-base__label">CNPJ *</label>
+      <div data-v-ed265372="" class="input-base__wrapper"><input data-v-ed265372="" data-testid="input-base__field" type="tel" placeholder="00.000.000/0000-00" class="input-base__field" autocomplete="off" name="document" id="document" required="">
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+    </div>
+    <div data-v-ed265372="" data-v-a5ecfb82="" class="input-base"><label data-v-ed265372="" data-testid="input-base__label" class="input-base__label">Data de abertura *</label>
+      <div data-v-ed265372="" class="input-base__wrapper"><input data-v-ed265372="" data-testid="input-base__field" type="tel" placeholder="28/05/1999" class="input-base__field" autocomplete="off" name="initial-date" id="initial-date" required="">
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+    </div>
+    <div data-v-ed265372="" data-v-a5ecfb82="" class="input-base"><label data-v-ed265372="" data-testid="input-base__label" class="input-base__label">Telefone *</label>
+      <div data-v-ed265372="" class="input-base__wrapper"><input data-v-ed265372="" data-testid="input-base__field" type="tel" placeholder="(00) 00000-0000" class="input-base__field" autocomplete="tel" name="tel" id="tel" required="">
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+    </div>
+  </div>
+  <div data-v-738a11c4="" data-v-f1da6af0="" class="password-step">
+    <div data-v-ed265372="" data-v-738a11c4="" class="input-base"><label data-v-ed265372="" data-testid="input-base__label" class="input-base__label">Sua senha *</label>
+      <div data-v-ed265372="" class="input-base__wrapper"><input data-v-ed265372="" data-testid="password-step__password-input" type="password" class="input-base__field" autocomplete="password" name="password" id="password" required=""><button data-v-ed265372="" type="button" class="input-base__toggle" data-testid="input-base__toggle"><span data-v-ed265372="">👁️</span></button></div>
+      <!--v-if-->
+    </div>
+    <transition-stub data-v-738a11c4="" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+  </div>
+</div>"
+`;
