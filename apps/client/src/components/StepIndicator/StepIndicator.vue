@@ -1,6 +1,10 @@
 <template>
   <div class="step-indicator">
-    Etapa <strong class="step-indicator__current">{{ currentStep }}</strong> de {{ totalSteps }}
+    Etapa
+    <strong data-testid="step-indicator__current" class="step-indicator__current">{{
+      currentStep
+    }}</strong>
+    de {{ totalSteps }}
   </div>
 </template>
 

@@ -11,6 +11,10 @@
     },
     "lint": {
       "outputs": []
+    },
+    "test": {
+      "cache": false,
+      "outputs": []
     }
   }
 }

@@ -2,6 +2,9 @@
   "name": "@mb/shared",
   "version": "1.0.0",
   "type": "module",
+  "scripts": {
+    "test": "vitest"
+  },
   "exports": {
     "./constants": "./constants/index.js",
     "./utils/validations": "./utils/validations.js"

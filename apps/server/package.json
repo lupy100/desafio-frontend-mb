@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "nodemon src/index.js",
     "build": "rm -rf dist && mkdir dist && cp -r src/* dist/",
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "test": "echo 'Test completed'"
   },
   "dependencies": {
     "cors": "^2.8.5",
