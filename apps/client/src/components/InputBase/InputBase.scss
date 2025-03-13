@@ -3,6 +3,21 @@
   flex-direction: column;
   height: 78px;
 
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  &__toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: $spacing-small;
+    font-size: $spacing-medium;
+  }
+
   &__field {
     padding: $spacing-small;
     border-radius: $border-radius;
@@ -10,6 +25,7 @@
     font-size: $text-body;
     outline: none;
     transition: border-color 0.3s ease;
+    width: 100%;
 
     &:focus {
       border-color: $color-brand-primary-light;

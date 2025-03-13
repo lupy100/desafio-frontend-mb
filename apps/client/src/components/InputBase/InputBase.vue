@@ -1,62 +1,74 @@
 <template>
   <div class="input-base" :class="{ 'input-base--error': errorMessage }">
-    <label v-if="label" class="input-base__label">{{ label }} {{ required ? '*' : '' }}</label>
-    <input
-      :type="type"
-      v-model="inputValue"
-      :placeholder="placeholder"
-      class="input-base__field"
-      @blur="$emit('blur')"
-      @focus="$emit('focus')"
-      :autocomplete="autocomplete"
-      :name="name"
-      :id="id"
-      :required="required"
-      :autofocus="autofocus"
-    />
-    <small v-if="errorMessage" class="input-base__error-message">{{ errorMessage }}</small>
+    <label v-if="label" data-testid="input-base__label" class="input-base__label">
+      {{ label }} {{ required ? '*' : '' }}
+    </label>
+    <div class="input-base__wrapper">
+      <input
+        data-testid="input-base__field"
+        :type="computedType"
+        v-model="inputValue"
+        :placeholder="placeholder"
+        class="input-base__field"
+        @blur="$emit('blur')"
+        @focus="$emit('focus')"
+        :autocomplete="autocomplete"
+        :name="name"
+        :id="id"
+        :required="required"
+        :autofocus="autofocus"
+      />
+      <button
+        v-if="type === 'password'"
+        type="button"
+        class="input-base__toggle"
+        @click="togglePasswordVisibility"
+      >
+        <span v-if="isPasswordVisible">🙈</span>
+        <span v-else>👁️</span>
+      </button>
+    </div>
+    <small
+      v-if="errorMessage"
+      data-testid="input-base__error-message"
+      class="input-base__error-message"
+      >{{ errorMessage }}</small
+    >
   </div>
 </template>
 
 <script setup>
+  import { ref, computed } from 'vue';
+
   const inputValue = defineModel('modelValue');
   defineEmits(['blur', 'focus']);
 
-  defineProps({
-    label: {
-      type: String,
-      default: '',
-    },
+  const props = defineProps({
+    label: String,
     type: {
       type: String,
       default: 'text',
     },
-    placeholder: {
-      type: String,
-      default: '',
-    },
-    errorMessage: {
-      type: String,
-      default: '',
-    },
-    autocomplete: {
-      type: String,
-    },
-    name: {
-      type: String,
-    },
-    id: {
-      type: String,
-    },
-    required: {
-      type: Boolean,
-      default: false,
-    },
-    autofocus: {
-      type: Boolean,
-      default: false,
-    },
+    placeholder: String,
+    errorMessage: String,
+    autocomplete: String,
+    name: String,
+    id: String,
+    required: Boolean,
+    autofocus: Boolean,
   });
+
+  const isPasswordVisible = ref(false);
+
+  const computedType = computed(() => {
+    if (props.type === 'password') return isPasswordVisible.value ? 'text' : 'password';
+
+    return props.type;
+  });
+
+  const togglePasswordVisibility = () => {
+    isPasswordVisible.value = !isPasswordVisible.value;
+  };
 </script>
 
 <style lang="scss" scoped>
