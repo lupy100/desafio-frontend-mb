@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://siteemproducao.com.br"><img src="https://github.com/user-attachments/assets/3081b43a-0c60-4a8f-9197-5f30d7bff550" alt="Logo Mercado Bitcoin" width="200"></a>
+  <a href="https://desafio-frontend-mb-client.vercel.app/"><img src="https://github.com/user-attachments/assets/3081b43a-0c60-4a8f-9197-5f30d7bff550" alt="Logo Mercado Bitcoin" width="200"></a>
   <br>
   Desafio Frontend Mercado Bitcoin
   <br>
@@ -25,6 +25,8 @@
 </p>
 
 ## 💻 Demonstração
+
+### Acesse [desafio-mb.com](https://desafio-frontend-mb-client.vercel.app/) para live demo.
 
 ### Demonstração do fluxo simples
 
