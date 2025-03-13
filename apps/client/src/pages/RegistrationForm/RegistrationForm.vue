@@ -59,7 +59,7 @@
   import StepIndicator from '@/components/StepIndicator/StepIndicator.vue';
   import WelcomeStep from './components/WelcomeStep.vue';
   import PersonInfoStep from './components/PersonInfoStep.vue';
-  import PasswordStep from './components/PasswordStep.vue';
+  import PasswordStep from './components/PasswordStep/PasswordStep.vue';
   import ReviewStep from './components/ReviewStep.vue';
   import { useValidation } from '@/composables/useValidations';
 

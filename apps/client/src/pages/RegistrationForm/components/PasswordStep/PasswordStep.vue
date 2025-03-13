@@ -1,6 +1,7 @@
 <template>
   <div class="password-step">
     <InputBase
+      test-id="password-step__password-input"
       v-model="password"
       label="Sua senha"
       type="password"
@@ -13,7 +14,11 @@
       required
     />
     <Transition>
-      <ul v-if="showPasswordRequirements" class="password-step__requirements">
+      <ul
+        data-testid="password-step__requirements"
+        v-if="showPasswordRequirements"
+        class="password-step__requirements"
+      >
         <li>- Deve conter no mínimo 8 caracteres</li>
         <li>- Deve conter no mínimo 1 letra maiúscula</li>
         <li>- Deve conter no mínimo 1 letra minúscula</li>
