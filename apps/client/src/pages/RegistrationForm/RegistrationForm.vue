@@ -1,9 +1,9 @@
 <template>
   <div class="registration-form">
     <StepIndicator :current-step="currentStep" :total-steps="LAST_STEP" />
-    <h1 class="registration-form__title">{{ stepTitle }}</h1>
+    <h1 data-testid="registration-form__title" class="registration-form__title">{{ stepTitle }}</h1>
 
-    <form @submit.prevent="submitForm">
+    <form data-testid="registration-form__form" @submit.prevent="submitForm">
       <Transition name="slide-fade" mode="out-in">
         <WelcomeStep
           v-if="currentStep === 1"
@@ -37,8 +37,16 @@
       </Transition>
 
       <div class="registration-form__actions">
-        <ButtonBase v-if="currentStep > 1" @click="goBack" variant="outlined">Voltar</ButtonBase>
-        <ButtonBase type="submit">Continuar</ButtonBase>
+        <ButtonBase
+          data-testid="registration-form__actions--back-button"
+          v-if="currentStep > 1"
+          @click="goBack"
+          variant="outlined"
+          >Voltar</ButtonBase
+        >
+        <ButtonBase data-testid="registration-form__actions--submit-button" type="submit"
+          >Continuar</ButtonBase
+        >
       </div>
     </form>
   </div>
@@ -88,7 +96,7 @@
     currentStep.value -= 1;
   };
 
-  const submitForm = async () => {
+  const validateStepFields = () => {
     const stepFields = {
       1: [
         { field: 'email', value: form.value.email },
@@ -111,8 +119,29 @@
         { field: 'password', value: form.value.password },
       ],
     };
+    const currentStepFields = stepFields[currentStep.value];
+    return validateAllFields(currentStepFields);
+  };
 
-    if (!validateAllFields(stepFields[currentStep.value])) return;
+  const handleSuccessfulRegistration = data => {
+    alert(`Dados retornados pelo BE:\n${data.message}\n${JSON.stringify(data.data, null, 2)}`);
+    //@todo: abrir uma modal de sucesso ia ser bom
+    form.value = setInitialState();
+    currentStep.value = 1;
+  };
+
+  const handleError = error => {
+    const responseErrors = error.errors;
+    if (!responseErrors) {
+      return alert('Erro ao enviar formulário para o BE:\n Ligue para o suporte e informe o erro');
+    }
+    Object.entries(responseErrors).forEach(([field, message]) => {
+      errors.value[field] = message;
+    });
+  };
+
+  const submitForm = async () => {
+    if (!validateStepFields()) return;
 
     if (currentStep.value < LAST_STEP) return (currentStep.value += 1);
 
@@ -121,23 +150,12 @@
       document: form.value.document.replace(/\D/g, ''),
       phoneNumber: form.value.phoneNumber.replace(/\D/g, ''),
     };
+
     try {
       const data = await registerUser(formPayload);
-      // @todo: Abrir um modal com os dados retornados
-      window.alert(
-        `Dados retornados pelo BE:\n${data.message}\n${JSON.stringify(data.data, null, 2)}`
-      );
-      form.value = setInitialState();
-      currentStep.value = 1;
+      handleSuccessfulRegistration(data);
     } catch (error) {
-      const responseErrors = error.errors;
-      if (!responseErrors)
-        return window.alert(
-          'Erro ao enviar formulário para o BE:\n Ligue para o suporte e informe o erro'
-        );
-      Object.entries(responseErrors).forEach(([field, message]) => {
-        return (errors.value[field] = message);
-      });
+      handleError(error);
     }
   };
 
