@@ -7,6 +7,7 @@ const DATA_TESTIDS = {
   input: '[data-testid="input-base__field"]',
   label: '[data-testid="input-base__label"]',
   errorMessage: '[data-testid="input-base__error-message"]',
+  toggle: '[data-testid="input-base__toggle"]',
 };
 
 describe('InputBase.vue', () => {
@@ -37,7 +38,7 @@ describe('InputBase.vue', () => {
 
     const input = wrapper.find(DATA_TESTIDS.input);
 
-    const button = wrapper.find('button');
+    const button = wrapper.find(DATA_TESTIDS.toggle);
     expect(input.attributes('type')).toBe('password');
 
     await button.trigger('click');

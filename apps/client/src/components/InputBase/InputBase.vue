@@ -22,6 +22,7 @@
         v-if="type === 'password'"
         type="button"
         class="input-base__toggle"
+        data-testid="input-base__toggle"
         @click="togglePasswordVisibility"
       >
         <span v-if="isPasswordVisible">🙈</span>
