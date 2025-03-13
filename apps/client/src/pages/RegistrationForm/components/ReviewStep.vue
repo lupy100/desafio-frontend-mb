@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-  import WelcomeStep from './WelcomeStep.vue';
+  import WelcomeStep from './WelcomeStep/WelcomeStep.vue';
   import PersonInfoStep from './PersonInfoStep.vue';
   import PasswordStep from './PasswordStep/PasswordStep.vue';
 

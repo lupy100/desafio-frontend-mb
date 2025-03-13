@@ -57,7 +57,7 @@
   import { registerUser } from '@/api/register';
   import ButtonBase from '@/components/ButtonBase/ButtonBase.vue';
   import StepIndicator from '@/components/StepIndicator/StepIndicator.vue';
-  import WelcomeStep from './components/WelcomeStep.vue';
+  import WelcomeStep from './components/WelcomeStep/WelcomeStep.vue';
   import PersonInfoStep from './components/PersonInfoStep.vue';
   import PasswordStep from './components/PasswordStep/PasswordStep.vue';
   import ReviewStep from './components/ReviewStep.vue';

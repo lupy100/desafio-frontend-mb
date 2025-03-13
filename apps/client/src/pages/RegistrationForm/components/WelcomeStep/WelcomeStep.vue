@@ -1,6 +1,7 @@
 <template>
   <div class="welcome-step">
     <InputBase
+      test-id="welcome-step__email-input"
       v-model="email"
       label="Endereço de e-mail"
       placeholder="joao.silva@mb.com.br"
@@ -17,6 +18,7 @@
       <div class="welcome-step__radio-group">
         <div class="welcome-step__radio">
           <input
+            data-testid="welcome-step__radio--pf"
             required
             name="document-type"
             type="radio"
@@ -28,11 +30,22 @@
         </div>
 
         <div class="welcome-step__radio">
-          <input name="document-type" type="radio" id="pj" value="pj" v-model="documentType" />
+          <input
+            data-testid="welcome-step__radio--pj"
+            name="document-type"
+            type="radio"
+            id="pj"
+            value="pj"
+            v-model="documentType"
+          />
           <label for="pj">Pessoa jurídica</label>
         </div>
       </div>
-      <small class="welcome-step__error-message" v-if="errors.documentType && !documentType">
+      <small
+        data-testid="welcome-step__error-message"
+        class="welcome-step__error-message"
+        v-if="errors.documentType && !documentType"
+      >
         {{ errors.documentType }}
       </small>
     </div>

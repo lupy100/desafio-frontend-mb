@@ -29,6 +29,7 @@ describe('PasswordStep', () => {
     expect(input.attributes('name')).toBe('password');
     expect(input.attributes('id')).toBe('password');
     expect(input.attributes('type')).toBe('password');
+    expect(input.attributes('required')).toBe('');
     expect(input.attributes('autocomplete')).toBe('password');
   });
 
